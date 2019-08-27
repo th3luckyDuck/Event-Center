@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>Duckys Media Center</title>
+    <meta name="Media Center" content="Media Center">
+    <!--script>
+       if (/AltspaceVR-App build-[0-9a-f]{7} Mobile/.test(navigator.userAgent)) {
+       window.location = "http://www.duckluck.net/tv/tv2.html";
+       }
+    </script-->
+    <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
+    <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.4.1/dist/altspace.js"></script>
+    <script src="bake-vertex-light.js"></script>
+    <script>
+    AFRAME.registerComponent('model-opacity', 
+             {
+  schema: { type: 'number', default: '1' },
+  init: function () 
+  {
+    var self = this;
+
+    self.el.addEventListener('model-loaded', handleEvent);
+
+    function handleEvent()
+    {
+      self.el.object3D.traverse( function(child) 
+                    {
+        if (child instanceof THREE.Mesh) 
+        {
+          child.material.transparent = true;
+          child.material.opacity = self.data;
+        }
+      });
+    }
+  }
+});
+</script>
+
+</head>
+  <body>
+
+    <a-scene altspace="verticalAlign: middle; fullspace: true" vr-mode-ui="enabled: false">
+
+    <a-assets>
+      <a-asset-item id="tvt-obj" src="tvt.obj"></a-asset-item>
+      <a-asset-item id="tvt-mtl" src="tvt.mtl"></a-asset-item>
+     </a-assets>
+
+     <a-entity camera position="0 10 0" wasd-controls="fly: true" look-controls></a-entity>
+        <a-light id="light1" type="directional" intensity="15000" position="-300 100 60"></a-light>
+
+     <a-obj-model scale="3.8 3.8 3.8" src="#tvt-obj" mtl="#tvt-mtl" position="0 0 0" rotation="0 -15 0" n-mesh-collider="type: environment; convex: false"></a-obj-model>
+     <!--a-entity a-obj-model="obj: url(tvt.obj); mtl: url(tvt.mtl)" scale="3.8 3.8 3.8" position="0 0 0" rotation="0 -15 0" n-mesh-collider="type: environment; convex: false" bake-vertex-light></a-entity-->
+
+     <a-entity position="0 8.5 5" rotation="0 60 0" scale="25 25 25" n-layout-browser="url: ; isEnclosure:true"></a-entity>
+
+     <a-entity id="tvg" rotation="0 100 0">
+
+    <a-entity id="g1">
+     <a-entity rotation="0 10 0">
+     <a-box color="black" position="0 1 11.2" rotation="0 180 0" scale="5.4 5.4 0.1"></a-box>
+    <a-entity id="en1" position="0 3.1 11" rotation="0 180 0" scale="7.5 7.5 7.5" n-layout-browser="url: https://www.windy.com/?rain,23.926,-85.254,5"></a-entity>
+    </a-entity>
+    </a-entity>
+
+    
+    <a-entity rotation="0 60 0">
+    <a-box color="black" position="0 1 11.2" rotation="0 180 0" scale="5.4 5.4 0.1"></a-box>
+    <a-entity id="en2" position="0 3.1 11" rotation="0 180 0" scale="7.5 7.5 7.5" n-layout-browser="url: https://www.youtube.com/watch?v=1Sm8A-u1vIA&list=PLU12uITxBEPHfZZRTIk96NduwU_8hT-Yo&index=1"></a-entity>
+     </a-entity>
+
+    <a-entity id="g2">
+    <a-entity rotation="0 110 0">
+    <a-box color="black" position="0 1 11.2" rotation="0 180 0" scale="5.4 5.4 0.1"></a-box>
+    <a-entity id="en3" position="0 3.1 11" rotation="0 180 0" scale="7.5 7.5 7.5" n-layout-browser="url: https://www.windy.com/?rain,23.926,-85.254,5"></a-entity>
+     </a-entity>
+     </a-entity>
+
+
+    <a-entity id="g3">
+    <a-entity rotation="0 170 0">
+    <a-box color="black" position="0 2 11.2" rotation="0 180 0" scale="5.2 5.2 0.1"></a-box>
+    <a-entity id="en4" position="0 3 11" rotation="0 180 0" scale="5.5 5.5 5.5" n-layout-browser="url: http://www.duckluck.net/tv/tv3.html"></a-entity>
+     </a-entity>
+    <a-entity rotation="0 205 0">
+    <a-box color="black" position="0 2 11.2" rotation="0 180 0" scale="5.2 5.2 0.1"></a-box>
+    <a-entity id="en5" position="0 3 11" rotation="0 180 0" scale="5.5 5.5 5.5" n-layout-browser="url: http://www.duckluck.net/tv/tv3.html"></a-entity>
+     </a-entity>
+     </a-entity>
+
+
+    <a-entity rotation="0 240 0">
+    <a-box color="black" position="0 2 11.2" rotation="0 180 0" scale="5.2 5.2 0.1"></a-box>
+    <a-box src="tvcr.jpg" position="0 0.75 11.1" rotation="0 180 0" scale="2.5 0.85 0.1"></a-box>
+    <a-entity id="en6" position="0 3 11" rotation="0 180 0" scale="5.5 5.5 5.5" n-layout-browser="url: http://www.duckluck.net/tv/tv3.html"></a-entity>
+     </a-entity>
+
+     
+     <a-entity id="g4">
+     <a-entity rotation="0 275 0">
+     <a-box color="black" position="0 2 11.2" rotation="0 180 0" scale="5.2 5.2 0.1"></a-box>
+    <a-entity id="en7" position="0 3 11" rotation="0 180 0" scale="5.5 5.5 5.5" n-layout-browser="url: http://www.duckluck.net/tv/tv3.html"></a-entity>
+     </a-entity>
+    <a-entity rotation="0 310 0">
+    <a-box color="black" position="0 2 11.2" rotation="0 180 0" scale="5.2 5.2 0.1"></a-box>
+    <a-entity id="en8" position="0 3 11" rotation="0 180 0" scale="5.5 5.5 5.5" n-layout-browser="url: http://www.duckluck.net/tv/tv3.html"></a-entity>
+     </a-entity>
+     </a-entity>
+
+     </a-entity>
+
+     
+
+
+     <!--a-sphere id="floor1" material="src: floor1.jpg; repeat: 5 5" src='floor1.jpg' position='0 0 0' rotation="0 0 0" scale="20 0.15 20"></a-sphere-->
+
+     <a-sky radius="500" rotation="0" material="src: sky1.jpg; repeat: 20 20" src="sky1.jpg" segments-width="16" segments-height="16"></a-sky>
+
+
+
+
+
+
+
+
+    </a-scene>
+
+
+    <!--script>
+         if (/AltspaceVR-App build-[0-9a-f]{7} Mobile/.test(navigator.userAgent)) {
+
+   document.querySelector('#en1').setAttribute('n-layout-browser', { url: www.duckluck.net/tv/tv3.html });
+   document.querySelector('#en3').setAttribute('n-layout-browser', { url: www.duckluck.net/tv/tv3.html });
+   document.querySelector('#en4').setAttribute('n-layout-browser', { url: www.duckluck.net/tv/tv3.html });
+   document.querySelector('#en5').setAttribute('n-layout-browser', { url: www.duckluck.net/tv/tv3.html });
+   document.querySelector('#en6').setAttribute('n-layout-browser', { url: www.duckluck.net/tv/tv3.html });
+   document.querySelector('#en7').setAttribute('n-layout-browser', { url: www.duckluck.net/tv/tv3.html });
+   document.querySelector('#en8').setAttribute('n-layout-browser', { url: www.duckluck.net/tv/tv3.html });
+
+      }
+       }
+    </script-->
+   </body>
+
+</html>
